@@ -1,5 +1,5 @@
 def read_data ():
-    with open("dayXX.txt", r) as f:
+    with open("dayXX.txt", "r") as f:
         pass
 
 
