@@ -24,8 +24,6 @@ def day1 (data):
     print (len(final))
 
 
-
-
 def day2(data):
     paths = [(["start"], 0)]
     final = []
@@ -35,13 +33,12 @@ def day2(data):
             final.append(path)
         else:
             for n in data[path[-1]]:
-                # if n != "start" and (n not in path or no or n.isupper():
-                #     paths.append(path+[n])
                 if n.isupper() or n not in path:
                     paths.append((path+[n], double))
                 elif n != "start" and not double:
                     paths.append((path+[n], 1))
     print (len(final))
+
 
 if __name__ == "__main__":
     data = read_data()

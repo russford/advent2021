@@ -8,7 +8,6 @@ def read_data ():
     return dots, lines
 
 def fold_points (points, axis, fold):
-    pos_side = [p for p in points if p[axis] > fold]
     if axis == 0:
         points = [(p[0] if p[0] < fold else 2 * fold - p[0], p[1]) for p in points]
     else:
