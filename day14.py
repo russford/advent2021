@@ -1,7 +1,7 @@
 import collections
 
 def read_data ():
-    with open("day14test.txt", "r") as f:
+    with open("day14.txt", "r") as f:
         data = f.read().split("\n\n")
         rules = collections.defaultdict(str)
         for line in data[1].split('\n'):
@@ -21,14 +21,12 @@ def iterate (s, rules, n):
                 counter[ins] += 1
             new += s[i] + ins
         s = new + s[-1]
-        print (len(s))
     print (max(counter.values()) - min(counter.values()))
 
 def count_pairs(s, rules, n):
     pairs = collections.defaultdict(int)
     for i in range(len(s)-1):
         pairs[s[i:i+2]] += 1
-    print (pairs)
     for i in range(n):
         next = collections.defaultdict(int)
         for pair, count in pairs.items():
@@ -41,8 +39,13 @@ def count_pairs(s, rules, n):
         for pair, count in pairs.items():
             for p in pair:
                 char_count[p] += count
-        print (char_count)
-        print ()
+        char_count[s[0]] += 1
+        char_count[s[-1]] += 1
+
+        for char in char_count:
+            char_count[char] //= 2
+
+    print (max(char_count.values()) - min(char_count.values()))
 
 
 
@@ -53,7 +56,7 @@ def day1 (start, rules):
 
 
 def day2(start, rules):
-    count_pairs(start, rules, 10)
+    count_pairs(start, rules, 40)
 
 
 if __name__ == "__main__":
