@@ -61,8 +61,6 @@ def day2 (data):
 
         return (data[p[1] % y_max][p[0] % x_max] + t_x + t_y - 1) % 9 + 1
 
-    print (''.join([str(cost_func((i,10))) for i in range(25)]))
-
     cost, path = search_astar((0,0), h_func, poss, cost_func)
     return cost
 
